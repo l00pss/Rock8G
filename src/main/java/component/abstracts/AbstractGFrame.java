@@ -1,7 +1,9 @@
 package component.abstracts;
 
 import com.formdev.flatlaf.FlatLaf;
+import factory.abstracts.*;
 import frames.widgets.MainMenuBar;
+import frames.widgets.TopPanel;
 import utility.concretes.ThemeChanger;
 
 import javax.imageio.ImageIO;
@@ -14,8 +16,17 @@ public class AbstractGFrame extends JFrame {
 
     private FlatLaf flatLightLaf;
     private MainMenuBar  mainMenuBar;
+    private TopPanel topPanel;
+
+    private final AbstractComponentFactory componentFactory;
+    private final AbstractLayoutFactory layerFactory;
+    private final AbstractWindowsFactory windowsFactory;
+
 
     {
+        componentFactory = (AbstractComponentFactory) FactoryManager.COMPONENT.get();
+        layerFactory = (AbstractLayoutFactory) FactoryManager.LAYOUT.get();
+        windowsFactory = (AbstractWindowsFactory) FactoryManager.WINDOWS.get();
         try {
             this.setTitle("Rock8G");
             this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -37,4 +48,12 @@ public class AbstractGFrame extends JFrame {
         this.setJMenuBar(mainMenuBar);
     }
 
+    {
+        topPanel = new TopPanel();
+        topPanel.init();
+        this.add(topPanel,BorderLayout.NORTH);
+    }
+
+    public AbstractGFrame() {
+    }
 }
