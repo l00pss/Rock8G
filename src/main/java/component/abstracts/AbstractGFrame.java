@@ -35,7 +35,6 @@ public class AbstractGFrame extends JFrame {
             this.setIconImage(ImageIO.read(new File("src/main/java/icon/5R.png")));
             flatLightLaf = ThemeChanger.DRACULA.get();
             UIManager.setLookAndFeel (flatLightLaf);
-            this.setVisible(true);
         } catch (IOException | UnsupportedLookAndFeelException e) {
             e.printStackTrace();
             JOptionPane.showMessageDialog(new JFrame("Error"),e.getMessage());
@@ -55,5 +54,9 @@ public class AbstractGFrame extends JFrame {
     }
 
     public AbstractGFrame() {
+    }
+
+    public void init(){
+        this.setVisible(true);
     }
 }
