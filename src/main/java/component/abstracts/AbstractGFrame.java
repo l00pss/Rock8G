@@ -12,7 +12,7 @@ import java.awt.*;
 import java.io.File;
 import java.io.IOException;
 
-public class AbstractGFrame extends JFrame {
+public class AbstractGFrame extends JFrame  {
 
     private FlatLaf flatLightLaf;
     private MainMenuBar  mainMenuBar;
